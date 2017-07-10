@@ -153,15 +153,15 @@ void ShowMenu(HWND hWnd)
     GetCursorPos(&p);
 
     hSubMenu = CreatePopupMenu();
-    AppendMenuW(hSubMenu, MF_STRING | MF_GRAYED, CMD_OPEN_IN_BROWSER, titleWide);
-    if (url)
-    {
-        AppendMenuW(hSubMenu, MF_SEPARATOR, 0, NULL);
-        AppendMenuW(hSubMenu, MF_STRING, CMD_OPEN_IN_BROWSER, L"Open in Browser");
-        AppendMenuW(hSubMenu, MF_STRING, CMD_COPY_LINK, L"Copy Link to Clipboard");
-    }
+    AppendMenuW(hSubMenu, MF_STRING, CMD_OPEN_IN_BROWSER, L"关于");
+//   if (url)
+//    {
+//        AppendMenuW(hSubMenu, MF_SEPARATOR, 0, NULL);
+//        AppendMenuW(hSubMenu, MF_STRING, CMD_OPEN_IN_BROWSER, L"Open in Browser");
+//        AppendMenuW(hSubMenu, MF_STRING, CMD_COPY_LINK, L"Copy Link to Clipboard");
+//    }
     AppendMenuW(hSubMenu, MF_SEPARATOR, 0, NULL);
-    AppendMenuW(hSubMenu, MF_STRING, CMD_EXIT, L"Exit");
+    AppendMenuW(hSubMenu, MF_STRING, CMD_EXIT, L"退出");
 
     SetForegroundWindow(hWnd); // Win32 bug work-around
     TrackPopupMenu(hSubMenu, TPM_BOTTOMALIGN | TPM_LEFTALIGN, p.x, p.y, 0, hWnd, NULL);
