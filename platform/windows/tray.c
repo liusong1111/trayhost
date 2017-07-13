@@ -29,8 +29,9 @@ void native_loop(const char *title, unsigned char *imageData, unsigned int image
 
     MSG msg;
 
-    titleWide = (wchar_t*)calloc(strlen(title) + 1, sizeof(wchar_t));
-    mbstowcs(titleWide, title, strlen(title));
+    //titleWide = (wchar_t*)calloc(strlen(title) + 1, sizeof(wchar_t));
+    //mbstowcs(titleWide, title, strlen(title));
+    titleWide = L"人脸活体检测服务";
 
     wcscpy((wchar_t*)szTitle, titleWide);
     wcscpy((wchar_t*)szWindowClass, (wchar_t*)TEXT("MyClass"));
@@ -87,7 +88,9 @@ void native_loop(const char *title, unsigned char *imageData, unsigned int image
     nid.uCallbackMessage = WM_MYMESSAGE;
     nid.hIcon = hIcon;
 
-    strcpy(nid.szTip, title); // MinGW seems to use ANSI
+    //strcpy(nid.szTip, (char *)(titleWide)); // MinGW seems to use ANSI
+    strcpy(nid.szTip, "mglive_server"); // MinGW seems to use ANSI
+    //wcscpy((wchar_t*)nid.szTip, titleWide);
     nid.uFlags = NIF_MESSAGE | NIF_ICON | NIF_TIP;
 
     Shell_NotifyIcon(NIM_ADD, &nid);
